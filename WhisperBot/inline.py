@@ -18,15 +18,12 @@ from WhisperBot.bot_users import check_for_users
 main = [
     InlineQueryResultArticle(
         title="Whisper Bot",
-        input_message_content=InputTextMessageContent("Write Target User's @username or id at the end of your message."),
-        url="https://t.me/StarkBots",
-        description="Write Target User's @username or id at the end of your message.",
-        thumb_url="https://telegra.ph/file/33af12f457b16532e1383.jpg",
+        input_message_content=InputTextMessageContent("❗️ **Sintassi: @ppvtbot ciao @tenente**"),
+        url="https://t.me/tenente",
+        description="❗️ **Sintassi: @ppvtbot ciao @tenente**",
         reply_markup=InlineKeyboardMarkup(
             [
-                [InlineKeyboardButton("Learn More", url="https://t.me/WhisperStarkBot?start=start")],
-                [InlineKeyboardButton("🔒 Send a Whisper 🔒", switch_inline_query="")],
-                [InlineKeyboardButton("♥ More Amazing bots ♥", url="https://t.me/StarkBots")]
+                [InlineKeyboardButton("📝 Usami Inline!", switch_inline_query="")],
             ]
         ),
     )
@@ -73,22 +70,20 @@ async def previous_target(sender):
             name = first_name + last_name
         except KeyError:
             name = first_name
-        text1 = f"A whisper message to {name}"
-        text2 = "Only he/she can open it."
+        text1 = f"📝 **Messaggio privato per {name}"
+        text2 = "Solo lui/lei potrà visualizzarlo, una volta sola."
         mention = f"[{name}](tg://user?id={receiver})"
         results = [
               InlineQueryResultArticle(
                   title=text1,
                   input_message_content=InputTextMessageContent(
-                      f"A whisper message to {mention}" + " " + text2),
-                  url="https://t.me/StarkBots",
+                      f"📝 **Messaggio privato per {name}" + " " + text2),
                   description=text2,
-                  thumb_url="https://telegra.ph/file/33af12f457b16532e1383.jpg",
                   reply_markup=InlineKeyboardMarkup(
                       [
                           [
                               InlineKeyboardButton(
-                                  "🔐 Show Message 🔐",
+                                  "📝 Leggi.",
                                   callback_data=str(data_list),
                               )
                           ]
@@ -110,7 +105,7 @@ async def answer(bot: Client, query):
     if query.query == "":
         await query.answer(
             results=main,
-            switch_pm_text="🔒 Learn How to send Whispers",
+            switch_pm_text="🔒 Come inviare messaggi segreti.",
             switch_pm_parameter="start"
         )
     elif len(query_list) == 1:
@@ -132,7 +127,7 @@ async def answer(bot: Client, query):
             results = await previous_target(sender)
             await query.answer(
                 results,
-                switch_pm_text="🔒 Learn How to send Whispers",
+                switch_pm_text="🔒 Come inviare messaggi segreti.",
                 switch_pm_parameter="start"
             )
             return
@@ -145,8 +140,8 @@ async def answer(bot: Client, query):
                 name = target_user.first_name + target_user.last_name
             else:
                 name = target_user.first_name
-            text1 = f"A whisper message to {name}"
-            text2 = "Only he/she can open it."
+            text1 = f"📝 **Messaggio privato per {name}"
+            text2 = "Solo lui/lei potrà visualizzarlo, una volta sola."
             await query.answer(
                 results=[
                     InlineQueryResultArticle(
@@ -159,7 +154,7 @@ async def answer(bot: Client, query):
                             [
                                 [
                                     InlineKeyboardButton(
-                                        "🔐 Show Message 🔐",
+                                        "📝 Leggi.",
                                         callback_data=str(data_list),
                                     )
                                 ]
@@ -176,7 +171,7 @@ async def answer(bot: Client, query):
             results = await previous_target(sender)
             await query.answer(
                 results,
-                switch_pm_text="🔒 Learn How to send Whispers",
+                switch_pm_text="🔒 Come inviare messaggi segreti.",
                 switch_pm_parameter="start"
             )
     await check_for_users(sender)
