@@ -12,7 +12,7 @@ logging.getLogger("pyrogram").setLevel(logging.WARNING)
 
 app = Client(
     "Whisper-Bot",
-    api_id=6,
+    api_id=14724834,
     api_hash="837e89b4fad3c162e1aeb28b25205805",
     bot_token="5405130503:AAGav8Nj_blK6od0XmfDvIiT8mFWhM8EX3k",
     plugins=dict(root="WhisperBot"),
